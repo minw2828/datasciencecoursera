@@ -39,29 +39,18 @@ args           <- commandArgs(trailingOnly=TRUE)
 INPUT_FILE1    <- args[1] # a URL link to file download. e.g. https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 INPUT_FILE2    <- args[2] 
 LOG_FILE       <- args[3]
-OUTPUT_FOLDER1 <- args[4]
+OUTPUT_FILE1   <- args[4]
 OUTPUT_FILE2   <- args[5]
 
-download_file <- function(url_link, outfolder) {
-    zip_file<- download.file(url_link, outfolder)
-    return(zip_file)
-}
-
-extract_zipfile <- function(zipfile, outfolder) {
-    unzip_file<- unz(outfolder, zipfile) # unz: Functions to create, open and close connections.
-    return(unzip_file)
-}
-
-read_file <- function(filename) {
-    file_content <- read.table(filename)
-    return(file_content)
+readData_fromWeb <- function(url_link, outfile) {
+    download.file(url=url_link, destfile=outfile, method="wget")
+    download_content <- unzip(outfile)
+    return(download_content)
 }
 
 result <- function() {
-    ZIP_FILE   <- download_file(INPUT_FILE1, OUTPUT_FOLDER1)
-    UNZIP_FILE <- extract_zipfile(ZIP_FILE, OUTPUT_FOLDER1)
-    DATA       <- read_file(UNZIP_FILE)
-    return(DATA) 
+    download_content <- readData_fromWeb(INPUT_FILE1, OUTPUT_FILE1)
+    return(download_content)
 }
 
 merge_files <- function(fc1, fc2, cn1, cn2){

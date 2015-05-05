@@ -19,8 +19,8 @@
 ## Rscript <MODULE_NAME>
 
 
-download.file(url='https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv', destfile='./raw_data.csv', method="wget")
-data           <- read.table('./raw_data.csv', sep=",", header=TRUE)
+download.file(url='https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv', destfile='./ques1.raw_data.csv', method="wget")
+data           <- read.table('./ques1.raw_data.csv', sep=",", header=TRUE)
 property_value <- data$VAL
 filtered_pv    <- na.omit(property_value)
 count <- 0
