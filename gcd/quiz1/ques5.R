@@ -23,4 +23,4 @@ library(data.table)
 
 download.file(url='https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv', destfile='./ques5.raw_data.csv', method="wget")
 DT <- fread('./ques5.raw_data.csv') # fread: Similar to ‘read.table’ but faster and more convenient.
-
+DT[,mean(pwgtp15),by=SEX]

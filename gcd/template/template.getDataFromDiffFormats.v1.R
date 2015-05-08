@@ -1,33 +1,30 @@
 # /usr/bin/rscript
 
 ## Description:
-## This module 
-##
-## <INPUT_FILE1>:
-## <INPUT_FILE2>:
-## <OUTPUT_FILE1>:
-## <OUTPUT_FILE2>:
-##
+## This module is a template for getting data from different formats. 
+## It is obtained from Coursera course <Getting and Cleaning Data> Lecture 
+## videos in Week 1.
+## 
+## It inlcudes functions for the following purposes:
+## downloadFileFromWeb - Download a file from a website
+## readFileRobust      - Read a file in the robustest way using read.table method
+## readExcelFile       - Read a MS Excel spreadsheet     
+## readXmlFromWeb      - Read a XML file from a website
+## readJsonFromWeb     - Read a JSON(Javascript Object Notation; Common format for APIs) file
+## dataFrames2Json     - Load data frame to JSON
+## json2DataFrame      - Load JSON to data frame
+## readDataTable       - Read a file using data.table method; Great for reading big data
+## writeExcelFile      - Write content to a MS Excel spreadsheet
+## writeFileRobust     - Write content to a file using write.table method
+## 
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 2015
+## 6 May 2015
 ## 
 ## Date modified and reason: 
-##
-## Execution: 
-## Rscript <MODULE_NAME> <INPUT_FILE1> <INPUT_FILE2> <LOG_FILE> <OUTPUT_FILE1> <OUTPUT_FILE2>
 
-
-library(methods)
-
-args         <- commandArgs(trailingOnly=TRUE)
-INPUT_FILE1  <- args[1]
-INPUT_FILE2  <- args[2]
-LOG_FILE     <- args[3]
-OUTPUT_FILE1 <- args[4]
-OUTPUT_FILE2 <- args[5]
 
 downloadFileFromWeb <- function(url_link, dest_dir, dest_file) {
     ## Note: This function is tested working well on 6 May 2015.
@@ -159,17 +156,5 @@ writeExcelFile <- function(filename, filecontent) {
 
 writeFileRobust <- function(df, filename) {
     write.table(df, file=filename, sep = ",", append = FALSE, row.names=TRUE, col.names=NA)
-    }
-
-result <- function() {
 }
 
-writeLog <- function() {
-    write(paste(args, sep =" "), file=LOG_FILE, append=TRUE)
-    write(paste('[Time Usage:', proc.time()[3], 'seconds]', sep=' '), file=LOG_FILE, append=TRUE)
-    write(paste('[Memory Peak Usage:',gc()[2,6],'MB]', sep=' '), file=LOG_FILE, append=TRUE)
-}
-
-# run
-result()
-writeLog()
