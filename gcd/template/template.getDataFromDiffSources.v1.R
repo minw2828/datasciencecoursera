@@ -178,5 +178,10 @@ accessWebWithPasswords <- function(url_link, username, password) {
     # Note: use handle can save username and password so that no need to retype
 }
 
+accessApplicationFromR <- function(app_name, url_link, username, password) {
+    ## > accessApplicationFromR("twitter", )
+    myapp <- oauth_app("twitter", key="")
+    return()
+}
 
 
