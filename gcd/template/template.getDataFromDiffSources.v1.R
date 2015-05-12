@@ -52,7 +52,7 @@ readMysqlDb <- function(user, database, host_url, tableName) {
     dbListFields(db, tableName) 
     # get the total number of rows in the table
     # note: paste("select count(*) from", tableName, sep=" ") returns a true MySQL command parsing to databse
-    dbGetOuery(db, paste("select count(*) from", tableName, sep=" ")) 
+    dbGetQuery(db, paste("select count(*) from", tableName, sep=" ")) 
     # read from a specific table
     data <- dbReadTable(db, tableName)
     head(data)
