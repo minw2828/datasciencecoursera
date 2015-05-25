@@ -1,12 +1,29 @@
 # /usr/bin/rscript
 
-## Description:
-## This module answers the question 3 in the following link:
-## https://class.coursera.org/getdata-014/quiz/attempt?quiz_id=25
+## Coursera Getting and Cleaning Data
+## by Jeff Leek, PhD, Roger D. Peng, PhD, Brian Caffo, PhD
+## Johns Hopkins University
 ##
-## You will need the description of variable name from the following link:
-## https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FPUMSDataDict06.pdf
+## Question 3
 ## 
+## Download the Excel spreadsheet on Natural Gas Aquisition Program here: 
+## 
+## https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx
+## 
+## Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:
+##     dat 
+## What is the value of:
+##     sum(dat$Zip*dat$Ext,na.rm=T) 
+## (original data source: http://catalog.data.gov/dataset/natural-gas-acquisition-program)
+## 
+## 184585
+## 0
+## 36534720
+## NA
+##  
+## Description:
+## This script attempts to answer the above question.
+##
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
