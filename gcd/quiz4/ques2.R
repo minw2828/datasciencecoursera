@@ -24,6 +24,9 @@
 ## Description:
 ## This script attempts to answer the above question. 
 ##
+## Answer:
+## 
+## 
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
@@ -36,4 +39,7 @@
 ## Rscript <MODULE_NAME>
 
 
+download.file(url="https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="./ques2.raw_data.csv", method="curl")
+dataDownloaded <- date()
+data <- read.table(file="./ques2.raw_data.csv", header=FALSE, sep=",", quote="", row.names=1, na.strings="NA")
 
