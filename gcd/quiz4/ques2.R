@@ -31,7 +31,7 @@
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 25 May 2015
+## 26 May 2015
 ##
 ## Date modified and reason:
 ##
@@ -44,4 +44,5 @@ dataDownloaded <- date()
 data           <- read.table("./ques2.raw_data.csv", sep=",", header=FALSE, quote="\"", na.strings=c("",".","NA"), skip=5)
 GDP            <- data[,5]
 reformat_GDP   <- gsub(",", "", GDP,)
-mean(as.numeric(reformat_GDP), na.rm=TRUE)
+numeric_GDP    <- as.numeric(reformat_GDP)
+mean(numeric_GDP, na.rm=TRUE)
