@@ -41,5 +41,7 @@
 
 download.file(url="https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="./ques2.raw_data.csv", method="curl")
 dataDownloaded <- date()
-data <- read.table(file="./ques2.raw_data.csv", header=FALSE, sep=",", quote="", row.names=1, na.strings="NA")
-
+data           <- read.table("./ques2.raw_data.csv", sep=",", header=FALSE, quote="\"", na.strings=c("",".","NA"), skip=5)
+GDP            <- data[,5]
+reformat_GDP   <- gsub(",", "", GDP,)
+mean(as.numeric(reformat_GDP), na.rm=TRUE)

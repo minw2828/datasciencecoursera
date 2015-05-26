@@ -34,7 +34,8 @@ relevel(, ref="yes")
 as.numeric(variablefac) # change the level from string to numeric
 
 # using the mutate function
-library(Hmisc); library(plyr)
+library(Hmisc)
+library(plyr)
 restData2 <- mutate(restData, zipGroups=cut2(zipCode, g=4)) # create a new variable and add to dataset simultaneously; restData2 is a new data frame here; zipGroups is the new variable added
 table(restData$zipGroups); view result in table
 
