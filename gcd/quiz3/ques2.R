@@ -25,12 +25,20 @@
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 25 May 2015
+## 27 May 2015
 ##
 ## Date modified and reason:
 ##
 ## Execution:
 ## Rscript <MODULE_NAME>
 
+
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg"
+download.file(url=fileUrl, destfile="./ques2.raw_data.jpg", method="curl")
+list.files("./")
+dateDownload <- date()
+dateDownload
+
+install.packages("jpeg")
 
 

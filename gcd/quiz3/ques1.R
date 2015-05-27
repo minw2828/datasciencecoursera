@@ -37,7 +37,7 @@
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 25 May 2015
+## 27 May 2015
 ##
 ## Date modified and reason:
 ##
@@ -45,7 +45,12 @@
 ## Rscript <MODULE_NAME>
 
 
-download.file(url="https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv", destfile="./ques1.raw_data.csv", method="curl")
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
+download.file(url=fileUrl, destfile="./ques1.raw_data.csv", method="curl")
+list.files("./")
+dateDownload <- date()
+dateDownload
+
 data <- read.csv("./ques1.raw_data.csv")
 head(data)
 colnames(data)
