@@ -1,8 +1,8 @@
-# start with reshaping
+# Start with reshaping
 library(reshape2)
 head(mtcars) # mtcars is a built-in tester dataset
 
-# melt the data frames
+# Melt the data frames
 # use the melt() function which assigs which variables are id variables and which variables are measure variables as follow:
 mtcars$carname <- rownames(mtcars)
 carMelt <- melt(mtcars, id=c("carname", "gear", "cyl"), measure.vars=c("mpg", "hp"))
@@ -10,7 +10,7 @@ head(carMelt, n=3)
 tail(carMelt, n=3)
 # after reshape the data is tidy and skinny. The residuals are removed.
 
-# cast data frames, i.e. reformat the dataset into different shapes
+# Cast data frames, i.e. reformat the dataset into different shapes
 # the dcast() function below will recast the dataset into a particular shape	and into a particular data frame
 cylData <- dcast(carMelt, cyl ~ variable) 
 cylData # summarize the dataset and tells how many measures we have for each variable
@@ -20,7 +20,7 @@ cylData
 # averaging values
 head(InsectSprays) # view data
 # within each InsectSprays$spray, sum InsectSprays$count; a brief short-hand way to calculate those sums
-tapply(InsectSprays$count, InsectSprays$spray,sum) 
+tapply(InsectSprays$count, InsectSprays$spray, sum) 
 
 # another way - split, apply, combine
 # the following command split the InsectSprays$count by InsectSprays$spray and ends up a list of arrays
