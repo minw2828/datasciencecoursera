@@ -37,7 +37,7 @@ table(restData$zipGroups) # returns factor variable; count the occurance of an e
 table(restData$zipGroups, restData$zipCode)
 
 # Easier cutting
-libray(Hmisc)
+library(Hmisc)
 # break into 4 different groups and break according to quantiles
 restData$zipGroups <- cut2(restData$zipCode, g=4)
 table(restData$zipGroups)

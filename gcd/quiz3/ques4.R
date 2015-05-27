@@ -19,6 +19,9 @@
 ## Description:
 ## This script attempts to answer the above question. 
 ##
+## Answer:
+## 32.96667, 91.91304
+## 
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
@@ -32,6 +35,7 @@
 
 
 library(data.table)
+library(reshape2)
 library(plyr)
 
 destfile1 <- "./ques3.raw_data.1.csv"
@@ -58,8 +62,16 @@ setkey(target_data1, "CountryCode")
 setkey(target_data2, "CountryCode")
 result_table <- merge(target_data1, target_data2)
 
+## What is the average GDP ranking for the "High income: OECD" and "High income:
+## nonOECD" group?
 colnames(result_table)
-result_table$"Income Group" %in% c("High income: OECD", "High income:nonOECD")
-restData$nearMe <- resData$eighbourhood %in% c("Roland Park", "Homeland") 
+sprt   <- split(result_table$"Ranking", result_table$"Income Group")
+g1     <- sprt$`High income: OECD`
+g2     <- sprt$`High income: nonOECD`
+tmp_g1 <- gsub(",", "", g1)
+tmp_g2 <- gsub(",", "", g2)
+g1n    <- as.numeric(tmp_g1)
+g2n    <- as.numeric(tmp_g2)
 
+mean(g1n); mean(g2n)
 
