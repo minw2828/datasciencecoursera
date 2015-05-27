@@ -40,3 +40,4 @@ ymd_hms("2011-08-03 10:15:03", tz="Pacific/Auckland")
 x <- dmy(c("1jan2013", "2jan2013", "31mar2013", "30jul2013"))
 wday(x[1])
 wday(x[1], lable=TRUE)
+

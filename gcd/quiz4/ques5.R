@@ -26,11 +26,14 @@
 ## Description:
 ## This script attempts to answer the above question. 
 ##
+## Answer:
+## 250, 47
+## 
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 25 May 2015
+## 27 May 2015
 ##
 ## Date modified and reason:
 ##
@@ -38,9 +41,22 @@
 ## Rscript <MODULE_NAME>
 
 
+install.packages("quantmod")
+
 library(quantmod)
 
 amzn        <- getSymbols("AMZN",auto.assign=FALSE)
 sampleTimes <- index(amzn) 
+
+head(amzn)
+head(sampleTimes)
+
+nrow(amzn)
+length(sampleTimes)
+
+target_year <- grep('2012', sampleTimes, value=TRUE)
+
+length(target_year)
+length(grep('Monday', weekdays(as.Date(target_year)), value=TRUE))
 
 

@@ -25,13 +25,13 @@
 ## This script attempts to answer the above question. 
 ##
 ## Answer:
-## 
+## 377652.4
 ## 
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 26 May 2015
+## 27 May 2015
 ##
 ## Date modified and reason:
 ##
@@ -41,8 +41,19 @@
 
 download.file(url="https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", destfile="./ques2.raw_data.csv", method="curl")
 dataDownloaded <- date()
-data           <- read.table("./ques2.raw_data.csv", sep=",", header=FALSE, quote="\"", na.strings=c("",".","NA"), skip=5)
-GDP            <- data[,5]
+data           <- read.table("./ques2.raw_data.csv", sep=",", header=FALSE, quote="\"", na.strings=c("","..","NA"), skip=5)
+
+# clean up data
+# remove columns that all values are NA
+tmp_data <- Filter(function(x)!all(is.na(x)), data)
+# remove rows that all values are NA
+tmp_tmp_data <- tmp_data1[!apply(tmp_data, 1, function(x) all(is.na(x))),]
+# remove rows whose first column is NA
+final_data <- tmp_tmp_data[which(!is.na(tmp_tmp_data$V1)), ]
+
+colnames(final_data)
+GDP            <- final_data[1:190,]$V5
 reformat_GDP   <- gsub(",", "", GDP,)
 numeric_GDP    <- as.numeric(reformat_GDP)
 mean(numeric_GDP, na.rm=TRUE)
+

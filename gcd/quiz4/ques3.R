@@ -16,12 +16,10 @@
 ## grep("*United",countryNames), 5
 ## grep("^United",countryNames), 3
 ## 
-## 
-## Answer:
-## grep("^United",countryNames), 3
-## 
 ## Description:
 ## This script attempts to answer the above question. 
+## Answer:
+## grep("^United",countryNames), 3
 ##
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
