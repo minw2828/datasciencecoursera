@@ -16,6 +16,10 @@
 ## grep("*United",countryNames), 5
 ## grep("^United",countryNames), 3
 ## 
+## 
+## Answer:
+## grep("^United",countryNames), 3
+## 
 ## Description:
 ## This script attempts to answer the above question. 
 ##
@@ -31,4 +35,8 @@
 ## Rscript <MODULE_NAME>
 
 
+data         <- read.table("./ques2.raw_data.csv", sep=",", header=FALSE, quote="\"", na.strings=c("",".","NA"), skip=5)
+countries    <- data[,4]
+countryNames <- countries[!is.na(countries)]
+grep("^United", countryNames)
 
