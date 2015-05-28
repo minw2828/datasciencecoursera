@@ -18,6 +18,7 @@
 ## 
 ## Description:
 ## This script attempts to answer the above question. 
+## 
 ## Answer:
 ## grep("^United",countryNames), 3
 ##
