@@ -14,47 +14,58 @@
 ##     (no graphical "language")
 ##   < Plot is just a series of R commands
 ##
-## Example of Base Plot
+
+## Base Plot
 library(datasets)
 data(cars)
 with(cars, plot(speed, dist)) 
 
-## The Lattice System: 
-##   - Plots are created with a single function call (xyplot, bwplot, etc.) 
-##   > Most useful for conditioning types of plots: Looking at how y changes 
-##     with x across levels of z
-##   > Things like margins/spacing set automatically because entire plot is 
-##     specified at once
-##   > Good for putting many many plots on a screen
-##   < Sometimes awkward to specify an entire plot in a single function call
-##   < Annotation in plot is not especially intuitive 
-##   < Use of panel functions and subscripts difficult to wield and requires 
-##     intense preparation
-##   < Cannot "add" to the plot once it is created
-## 
-## Example of Lattice System:
-library(lattice)
-state <- data.frame(state.x77, region=state.region)
-xyplot(:ife.Exp~Income | region, data=state, layout=c(4,1))
-
-## The ggplot2 System: (recommend)
-##   - Splits the difference between base and lattice in a number of ways 
-##   - Automatically deals with spacings, text, titles but also allows you to
-##     annotate by "adding" to a plot
-##   - Superficial similarity to lattice but generally easier/more intuitive 
-##     to use
-##   - Default mode makes many choices for you (but you can still customize 
-##     to your heart's desire)
 ##
-## Example of The ggplot2 System: 
-library(ggplot2)
-data(mpg)
-qplot(displ, hwy, data=mpg)
-
-## Summary
-## Base:    "artists palette" model
-## Lattice: Entire plot specified by one function; conditioning
-## ggplot2: Mixes elements of Base and Lattice
-## Note: The above three systems are NOT interchangeable.
-
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
 

@@ -1,15 +1,5 @@
-## Base Plotting Demonstration
-
-## 
-##
-##
-##
-##
-##
-##
-##
-##
-##
+## Working with Color in R Plots (part 2)
+ 
 ##
 ##
 ##

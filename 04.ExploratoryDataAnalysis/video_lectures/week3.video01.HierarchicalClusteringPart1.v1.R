@@ -1,6 +1,8 @@
-## Graphics Devices In R (Part2)
+## Hierarchical Clustering (part 1)
 
-## 
+##
+##
+##
 ##
 ##
 ##

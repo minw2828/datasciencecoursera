@@ -1,24 +1,6 @@
-## Graphics Devices In R (Part2)
+## Air Pollution Case Study
 
 ## 
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
 ##
 ##
 ##

@@ -1,18 +1,6 @@
-## Base Plotting Demonstration
+## Dimension Reduction (part 3)
 
 ## 
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
 ##
 ##
 ##

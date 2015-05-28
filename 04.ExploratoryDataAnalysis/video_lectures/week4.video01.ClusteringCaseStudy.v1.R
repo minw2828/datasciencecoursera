@@ -1,11 +1,5 @@
-## Base Plotting Demonstration
+## Clustering Case Study
 
-## 
-##
-##
-##
-##
-##
 ##
 ##
 ##

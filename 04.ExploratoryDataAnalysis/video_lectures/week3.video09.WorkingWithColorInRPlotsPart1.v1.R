@@ -1,16 +1,6 @@
-## Graphics Devices In R (Part2)
+## Working with Color in R Plots (part 1)
 
 ## 
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
 ##
 ##
 ##
