@@ -1,8 +1,9 @@
 Exploratory Data Analysis (eda)
 
-=========================================
+===========================================================================
 SYLLABUS
-=========================================
+===========================================================================
+
     Background Material
 Installing R on Windows  
 Installing R on a Mac
@@ -12,7 +13,7 @@ Setting Your Working Directory (Mac)
 Use R version 3.1.1  
 
     Week 1
-Introduction
+Introduction                                 - No template
 Principles of Analytic Graphics 
 Exploratory Graphs (part 1) 
 Exploratory Graphs (part 2) 
