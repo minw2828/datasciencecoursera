@@ -26,7 +26,7 @@
 ## Principle 4: Show Integration of evidence
 ##   - Completely integrate words, numbers, images, diagrams
 ##   - Data graphics should make use of many modes of data presentation
-##   - Don't let the tool drive the analysis
+##   - Do not let the tool drive the analysis
 ##   e.g. Nice example: Integrate graph, text, table, caption into one plot.
 ##
 ## Principle 5: Describe and document the evidence with appropriate labels, scales, sources, 
