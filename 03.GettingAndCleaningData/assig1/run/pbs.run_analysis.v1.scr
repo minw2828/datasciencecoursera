@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# pbs.template.v1.sh, Min Wang, Jan 2015
+# This module 
+
+## Requirement:
+## You will need to adjust parameters under [program], [input] and [output] to fit your case.
+
+## Execution:
+## qsub pbs.template.v1.sh 
+
+# Parameters that need to be passed to the script:
+PRE_PATH='/home/mw1d/coursera/gcd/week1'
+PROJ_FOLDER=''
+PROJ_PATH=$PRE_PATH/$PROJ_FOLDER
+
+# version
+v='v1'
+
+# program
+PROG_FILE1='run_analysis.R'
+PROG_FILE2=''
+PROG_FILE3=''
+PROG_FILE4=''
+PROG_PATH1=$PROJ_PATH'/assig1/bin'
+
+# input files
+INPUT_FILE1='https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
+INPUT_FILE2=''
+INPUT_FILE3=''
+INPUT_FILE4=''
+INPUT_PATH1=''
+INPUT_PATH2=$PROJ_PATH''
+INPUT_PATH3=$PROJ_PATH''
+INPUT_PATH4=$PROJ_PATH''
+
+# input parameters
+
+# output files
+OUTPUT_FILE1='raw_data.zip'
+OUTPUT_FILE2='raw_dataq'
+OUTPUT_FILE3=''
+OUTPUT_FILE4=''
+OUTPUT_PATH1=$PROJ_PATH'/assig1/output'
+OUTPUT_PATH2=$PROJ_PATH''
+
+# log file
+LOG_FILE='log'
+LOW_PATH=$PROJ_PATH''
+
+
+# write to *.o* file
+echo ""
+echo "PBS_JOBNAME:       $PBS_JOBNAME"
+echo "PBS_JOBID:         $PBS_JOBID"
+echo ""
+echo "HERE:              `pwd`"
+echo ""
+echo "PROGRAM:           $PROG_PATH1/$PROG_FILE1"
+echo "                   $PROG_PATH1/$PROG_FILE2"
+echo "                   $PROG_PATH1/$PROG_FILE3"
+echo "                   $PROG_PATH1/$PROG_FILE4"
+echo ""
+echo "INPUT FILES:       $INPUT_PATH1/$INPUT_FILE1"
+echo "                   $INPUT_PATH2/$INPUT_FILE2"
+echo "                   $INPUT_PATH3/$INPUT_FILE3"
+echo "                   $INPUT_PATH4/$INPUT_FILE4"
+echo ""
+echo "OUTPUT FILES:      $OUTPUT_PATH1/$OUTPUT_FILE1"
+echo "                   $OUTPUT_PATH1/$OUTPUT_FILE2"
+echo "                   $OUTPUT_PATH1/$OUTPUT_FILE3"
+echo "                   $OUTPUT_PATH1/$OUTPUT_FILE4"
+echo ""
+echo "LOG FILE:          $LOW_PATH/$LOG_FILE"
+echo ""
+
+# delete all files in $OUTPUT_PATH if there is any
+find "$OUTPUT_PATH1" -type f -exec rm {} \;
+
+# analysis
+
+# remove temporary files
+rm $OUTPUT_PATH1/tmp.*
+
+exit 0
