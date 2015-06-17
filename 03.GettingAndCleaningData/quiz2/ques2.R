@@ -24,16 +24,24 @@
 ## 
 ## Description:
 ## This script attempts to answer the above question.
-##  
+## 
 ## Author:
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 5 May 2015
+## 17 June 2015
 ## 
 ## Date modified and reason: 
 ##
 ## Execution: 
 ## Rscript <MODULE_NAME>
+##
+## Answer:
+## sqldf("select pwgtp1 from acs where AGEP < 50")
 
+library(sqldf)
+
+acs <- download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv", "ques2.rawfile.csv", method="curl")
+acs <- read.table('./ques2.rawfile.csv', sep=",", header=TRUE)
+sqldf("select pwgtp1 from acs where AGEP < 50")
 

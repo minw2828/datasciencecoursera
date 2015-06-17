@@ -26,22 +26,59 @@
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 5 May 2015
+## 17 June 2015
 ## 
 ## Date modified and reason: 
 ##
+## Note:
+## This script needs to be run in R, Windows desktop because BASC does not allow pops up website 
+## authentication.
+## 
+## Note again:
+## The above description "Register an application with the Github API ... base R package 
+## and not R studio" are just misleading. It is one way to approach the problem but a simpler way 
+## is to just check with Week 1 Video Lectures "Reading JSON" and follow the instructions there.
+## 
 ## Execution: 
 ## Rscript <MODULE_NAME>
+##
+## Answer:
+## 2013-11-07T13:25:07Z 
+
+## Approach 1
+#library(httr)
+#library(httpuv)
+
+# 1. Find OAuth settings for github:
+#    http://developer.github.com/v3/oauth/
+#oauth_endpoints("github")
+
+# 2. To make your own application, register at at
+#    https://github.com/settings/applications. Use any URL for the homepage URL
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url
+#
+#    Replace your key and secret below.
+#myapp <- oauth_app("github",
+#  key = "1be483e1d89aa9b5b885",
+#  secret = "2555a190a3bd2a2331fa7517162fc5148b702aba")
 
 
-download.file(url='https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv', destfile='./ques1.raw_data.csv', method="wget")
-data           <- read.table('./ques1.raw_data.csv', sep=",", header=TRUE)
-property_value <- data$VAL
-filtered_pv    <- na.omit(property_value)
-count <- 0
-for (item in filtered_pv) {
-    if (item >= 24){
-        count <- count+1
-    }
-}
-print(count)
+# 3. Get OAuth credentials
+#github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+
+# 4. Use API
+#gtoken <- config(token = github_token)
+#req <- GET("https://api.github.com/users/jtleek/repos", gtoken)
+#stop_for_status(req)
+#content(req)
+
+
+## Approach 2
+library(jsonlite)
+jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
+names(jsonData)
+grep("create", names(jsonData))
+colnames(jsonData)
+jsonData$name
+jsonData$created_at[which(jsonData$name=="datasharing")]
+

@@ -29,11 +29,23 @@
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 5 May 2015
+## 17 June 2015
+## 
+## Note:
+## "report the sum of the numbers in the fourth of the nine columns." means: 
+## "report the sum of the variables in the fourth column"
 ## 
 ## Date modified and reason: 
 ##
 ## Execution: 
 ## Rscript <MODULE_NAME>
+##
+## Answer:
+## 32426.7
 
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for", "./ques5.rawfile.dat", method="curl")
+
+data <- read.fwf(file = "./ques5.rawfile.dat", widths = c(12, 7,4, 9,4, 9,4, 9,4), skip = 4, row.names=1)
+
+sum(data$V4)
 

@@ -21,11 +21,18 @@
 ## Min Wang (min.wang@depi.vic.gov.au)
 ##
 ## Date Created:
-## 5 May 2015
+## 17 June 2015
 ## 
 ## Date modified and reason: 
 ##
 ## Execution: 
 ## Rscript <MODULE_NAME>
+##
+## Answer:
+## sqldf("select distinct AGEP from acs")
 
+library(sqldf)
+
+acs <- read.table('./ques2.rawfile.csv', sep=",", header=TRUE)
+sqldf("select distinct AGEP from acs")
 
