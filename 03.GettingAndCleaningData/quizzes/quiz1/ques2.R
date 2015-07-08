@@ -14,6 +14,9 @@
 ## Numeric values in tidy data can not represent categories.
 ## Tidy data has no missing values. 
 ##
+## Answer
+## Tidy data has one variable per column.
+##
 ## Description:
 ## This script attempts to answer the above question.
 ## 
@@ -32,3 +35,4 @@
 data <- read.table('./raw_data.csv', sep=",", header=TRUE)
 fes  <- data$FES
 print(fes)
+
