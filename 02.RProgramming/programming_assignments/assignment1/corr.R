@@ -28,7 +28,7 @@
 ## Min Wang (min.wang@ecodev.vic.gov.au)
 ##
 ## Date Created:
-## 12 July 2015
+## 17 July 2015
 ## 
 ## Date modified and reason: 
 ##
@@ -36,6 +36,7 @@
 ## Rscript <MODULE_NAME>
 
 
+# impletement assignment function as required
 corr <- function(directory, threshold = 0) {
         ## 'directory' is a character vector of length 1 indicating
         ## the location of the CSV files
@@ -48,6 +49,20 @@ corr <- function(directory, threshold = 0) {
         ## Return a numeric vector of correlations
         ## NOTE: Do not round the result!
 		
-		
-		return()
+		if (all(complete(directory)$nobs <= threshold)) {
+		      return(vector(mode="numeric", length=0))
+      } else {
+            file_ids <- which(complete(directory)$nobs > threshold)
+            filename <- paste(paste(directory, sprintf("%03d", file_ids), sep="/"), "csv", sep=".")
+            result <- list()
+            for (file in filename) {
+                  raw_data <- read.csv(file)
+                  data <- raw_data[which(!is.na(raw_data$sulfate) & !is.na(raw_data$nitrate)),]
+                  result[[file]] <- cor(data$sulfate, data$nitrate)
+            }
+            return(as.vector(unlist(result)))
+      }
 }
+
+
+

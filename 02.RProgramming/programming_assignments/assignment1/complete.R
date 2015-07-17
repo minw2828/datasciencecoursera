@@ -30,6 +30,7 @@
 ## Rscript <MODULE_NAME>
 
 
+# impletement assignment function as required
 complete <- function(directory, id = 1:332) {
         ## 'directory' is a character vector of length 1 indicating
         ## the location of the CSV files
@@ -49,7 +50,7 @@ complete <- function(directory, id = 1:332) {
 		colnames(result) <- c("id", "nobs")
 		nr <- 1
 		for (i in id) {
-		        filename <- paste(paste(directory, sprintf("%03d", i), sep="\\"), "csv", sep=".")
+		        filename <- paste(paste(directory, sprintf("%03d", i), sep="/"), "csv", sep=".")
 		        data <- read.csv(filename)
 				result$id[nr] <-  i
 				result$nobs[nr] <- nrow(data[which(!is.na(data$sulfate) & !is.na(data$nitrate)),])
@@ -57,3 +58,5 @@ complete <- function(directory, id = 1:332) {
 		}
 		return(result)
 }
+
+

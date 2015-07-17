@@ -33,6 +33,7 @@
 ## Rscript <MODULE_NAME>
 
 
+# impletement assignment function as required
 pollutantmean <- function(directory, pollutant, id = 1:332) {
         ## 'directory' is a character vector of length 1 indicating
         ## the location of the CSV files
@@ -48,11 +49,11 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
         ## in the 'id' vector (ignoring NA values)
         ## NOTE: Do not round the result!
 		
-		filename <- paste(paste(directory, sprintf("%03d", id), sep="\\"), "csv", sep=".")
+		filename <- paste(paste(directory, sprintf("%03d", id), sep="/"), "csv", sep=".")
 		result <- list()
 		for (file in filename) {
 		        data <- read.csv(file)
-				result[[file]] <- data[, which(colnames(data) == pollutant)]
+				  result[[file]] <- data[, which(colnames(data) == pollutant)]
 		}
 		return(mean(unlist(result), na.rm=TRUE))	
 }
