@@ -42,7 +42,7 @@ download.file("https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2FProgAssignme
 unzip("ProgrammingAssignment3Data.dat")
 
 # load data into R
-outcome <- read.csv("F:\\PD\\Coursera\\datascience\\02.RProgramming\\rprog-data-ProgAssignment3-data\\outcome-of-care-measures.csv", colClasses = "character")
+outcome <- read.csv("rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv", colClasses = "character")
 head(outcome)
 ncol(outcome)
 nrow(outcome)
