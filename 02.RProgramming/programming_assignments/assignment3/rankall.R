@@ -28,20 +28,13 @@
 ## Min Wang (min.wang@ecodev.vic.gov.au)
 ##
 ## Date Created:
-## 21 July 2015
+## 23 July 2015
 ## 
 ## Date modified and reason: 
 ##
 ## Execution: 
 ## Rscript <MODULE_NAME>
 
-
-## > colnames(outcome)
-## [2] "Hospital.Name"
-## [7] "State"
-## [11] "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"
-## [17] "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure"
-## [23] "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia"
 
 # 4 Ranking hospitals in all states
 ## - Write a function called rankall that takes two arguments: an outcome name 
@@ -60,6 +53,10 @@
 ##   from the set of hospitals when deciding the rankings.
 ## - Handling ties. The rankall function should handle ties in the 30-day mortality 
 ##   rates in the same way that the rankhospital function handles ties.
+library(plyr)
+require(dplyr)
+library(data.table)
+
 rankall <- function(outcome, num = "best") {
         ## Read outcome data
         data <- read.csv("rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv",
@@ -83,25 +80,42 @@ rankall <- function(outcome, num = "best") {
         }
         # filter out NA values in outcome column
         data2 <- data1[which(is.na(data1[, 2]) == FALSE), ]
-        # select hospital that its ranking in each state is num
-
-        # filter out invalid num value in each state
-
-        # sort outcome column numerically & hospital name alphabetically
-        data3 <- data2[order(data2[, 2], data2[, 1]), ]
-        # manage special num values
-        if (num == "best") {
-                num <- 1
-        } else if (num == "worst") {
-                num <- nrow(data3)
-        }
+        # rename colnames 
+        colnames(data2) = c("hospital", "outcome", "state")
+        # rank data frame by group      
+        # handling ties: ties should be broken by using the hospital name.
+        data3 <- data2 %>% group_by(data2[, 3]) %>% arrange(data2[, 2], data2[, 1]) %>% mutate(rank=row_number())
         ## Return a data frame with the hospital names and the (abbreviated) state name
-        data4 <- data3[1:num, c(1, 3)]
-        colnames(data4) <- c("hospital", "state")
-        rownames(data4) <- data4[, 2]
-        return(data4)
+        data4 <- NULL
+        if (num == "best") {
+                data4 <- data3[which(data3$rank == 1), ]
+                data5 <- data4[, c("hospital", "state")]
+                data5 <- as.data.frame(data5)
+        } else if (num == "worst"){
+                data4 <- aggregate(rank~state, data3, max)
+                # or data4 <- ddply(data3, .(state), summarize, rank=max(rank))
+                data3 <- data.table(data3)
+                data4 <- data.table(data4)
+                setkeyv(data3, c("state", "rank"))
+                setkeyv(data4, c("state", "rank"))
+                data5 <- merge(data3, data4)
+                data5 <- as.data.frame(data5)[, c("hospital", "state")]
+        } else {
+                # data4 <- ddply(data3, .(state), subset, rank == num)
+                data4 <- ddply(data3, .(state), function(x) {
+                        x[which(x$rank == num),]
+                })
+                data4 <- data4[, c("hospital", "state")]
+                all_states <- as.data.frame(levels(data3$state))
+                colnames(all_states) <- "state"
+                data4 <- data.table(data4)
+                all_states <- data.table(all_states)
+                setkeyv(data4, c("state"))
+                setkeyv(all_states, c("state"))
+                data5 <- merge(data4, all_states, all.y=TRUE)
+                data5 <- as.data.frame(data5)[, c("hospital", "state")]
+        }
+        rownames(data5) <- data5[, 2]
+        return(data5)
 }
-
-
-
 

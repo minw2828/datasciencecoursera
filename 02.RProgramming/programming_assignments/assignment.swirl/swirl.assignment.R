@@ -72,4 +72,8 @@
 ## Rscript <MODULE_NAME>
 
 
+install.packages("swirl")
+library(swirl)
+swirl()
 
+install_from_swirl("R Programming")
