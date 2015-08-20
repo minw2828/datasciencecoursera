@@ -1,0 +1,84 @@
+norm                   package:base                    R Documentation
+
+_C_o_m_p_u_t_e _t_h_e _N_o_r_m _o_f _a _M_a_t_r_i_x
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Computes a matrix norm of ‘x’ using Lapack.  The norm can be the
+     one (‘"O"’) norm, the infinity (‘"I"’) norm, the Frobenius (‘"F"’)
+     norm, the maximum modulus (‘"M"’) among elements of a matrix, or
+     the “spectral” or ‘"2"’-norm, as determined by the value of
+     ‘type’.
+
+_U_s_a_g_e:
+
+     norm(x, type = c("O", "I", "F", "M", "2"))
+     
+_A_r_g_u_m_e_n_t_s:
+
+       x: numeric matrix; note that packages such as ‘Matrix’ define
+          more ‘norm()’ methods.
+
+    type: character string, specifying the _type_ of matrix norm to be
+          computed.  A character indicating the type of norm desired.
+
+          ‘"O"’, ‘"o"’ or ‘"1"’ specifies the *o*ne norm, (maximum
+              absolute column sum);
+
+          ‘"I"’ or ‘"i"’ specifies the *i*nfinity norm (maximum
+              absolute row sum);
+
+          ‘"F"’ or ‘"f"’ specifies the *F*robenius norm (the Euclidean
+              norm of ‘x’ treated as if it were a vector);
+
+          ‘"M"’ or ‘"m"’ specifies the *m*aximum modulus of all the
+              elements in ‘x’; and
+
+          ‘"2"’ specifies the “spectral” or 2-norm, which is the
+              largest singular value (‘svd’) of ‘x’.
+
+          The default is ‘"O"’.  Only the first character of ‘type[1]’
+          is used.
+
+_D_e_t_a_i_l_s:
+
+     The ‘base’ method of ‘norm()’ calls the Lapack function ‘dlange’.
+
+     Note that the 1-, Inf- and ‘"M"’ norm is faster to calculate than
+     the Frobenius one.
+
+_V_a_l_u_e:
+
+     The matrix norm, a non-negative number.
+
+_S_o_u_r_c_e:
+
+     Except for ‘norm = "2"’, the LAPACK routine ‘DLANGE’.
+
+     LAPACK is from <URL: http://www.netlib.org/lapack>.
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     Anderson, E., _et al_ (1994).  _LAPACK User's Guide_, 2nd edition,
+     SIAM, Philadelphia.
+
+_S_e_e _A_l_s_o:
+
+     ‘rcond’ for the (reciprocal) condition number.
+
+_E_x_a_m_p_l_e_s:
+
+     (x1 <- cbind(1, 1:10))
+     norm(x1)
+     norm(x1, "I")
+     norm(x1, "M")
+     stopifnot(all.equal(norm(x1, "F"),
+                         sqrt(sum(x1^2))))
+     
+     hilbert <- function(n) { i <- 1:n; 1 / outer(i - 1, i, "+") }
+     h9 <- hilbert(9)
+     ## all 5 types of norm:
+     (nTyp <- eval(formals(base::norm)$type))
+     sapply(nTyp, norm, x = h9)
+     
+

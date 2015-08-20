@@ -111,6 +111,5 @@ power.t.test(delta=0.01, sd=0.04, sig.level = 0.05, power=0.9, type="one.sample"
 
 ## Question 9
 ## As you increase the type one error rate, alpha, what happens to power?
-print("It's impossible to tell given the information in the problem.")
-
+print("You will get larger power.")
 
